@@ -5,12 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive: 2019/4</title>
+    <title>iOS ：『fastlane』自动化打包踩坑记录 - Hexo</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    
+    <meta name="description" content="#安装fastlane及配置环境变量
+安装最新的Xcode命令行工具：
+xcode-select --install
+安装fastlane
+# Fastlane其实是一个Ruby脚本的集合
+sudo,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -30,56 +35,92 @@
 <body class="loading">
     <span id="config-title" style="display:none">Hexo</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                    <div class="timeline">
-                      <h2 class="timeline-title">归档: 6篇</h2>
-                      
-                        
-                          <h3 class="timeline-subtitle">2019</h3>
-                        
-                        <div class="timeline-item">
-                          <time>2019-04-26</time>
-                          <a target="_self" href="/2019/04/26/iOS ：『fastlane』自动化打包踩坑记录/">iOS ：『fastlane』自动化打包踩坑记录</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2019-04-26</time>
-                          <a target="_self" href="/2019/04/26/iOS ：近段时间（2019-5）面试总结/">：iOS ：近段时间（2019/5）面试总结</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2019-04-23</time>
-                          <a target="_self" href="/2019/04/23/iOS ：Asset catalogs 到底做了什么/">iOS ：Asset catalogs 到底做了什么</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2019-04-23</time>
-                          <a target="_self" href="/2019/04/23/2019 年，Better late than never... /">2019 年，Better late than never...</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2019-04-23</time>
-                          <a target="_self" href="/2019/04/23/iOS ：『YYImage』源码分析（一）/">iOS ：『YYImage』源码分析（一）</a>
-                        </div>
-                      
-                    </div>
-                </div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">iOS ：『fastlane』自动化打包踩坑记录</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
             </div>
+            <div id="qr"></div>
         </div>
     </div>
+    <div class="scrollbar"></div>
 </div>
 
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">iOS ：『fastlane』自动化打包踩坑记录</h1>
+        <div class="stuff">
+            <span>四月 26, 2019</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>#安装fastlane及配置环境变量</p>
+<p>安装最新的Xcode命令行工具：</p>
+<pre><code>xcode-select --install
+</code></pre><p>安装fastlane</p>
+<pre><code># Fastlane其实是一个Ruby脚本的集合
+sudo gem install fastlane -NV
+
+# 此处可能需要先安装Homebrew
+brew cask install fastlane
+</code></pre><p>##设置fastlane</p>
+<p>找到项目的目录</p>
+<pre><code>fastlane init
+</code></pre><p>这时候会问你，你想用fastlane来帮你完成什么方面的自动化呢？</p>
+<pre><code>We recommend automating one task first, and then gradually automating more over time
+What would you like to use fastlane for?
+1. 📸  Automate screenshots //自动屏幕截图
+2. 👩‍✈️  Automate beta distribution to TestFlight //自动发布beta版本用于TestFlight
+3. 🚀  Automate App Store distribution //自动上传到APPStore提审
+4. 🛠  Manual setup - manually setup your project to automate your tasks //手动配置自动化任务
+</code></pre><p>此处我们选择手动配置</p>
+<p>##设置环境变量<br>FastLane需要设置一些环境变量才能正确运行。特别是，如果没有将区域设置设置为UTF-8区域设置，将导致生成和上传生成的问题。</p>
+<p>在shell配置文件中</p>
+<pre><code>vim ~/.bash_profile
+</code></pre><p>添加以下行：</p>
+<pre><code>export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+</code></pre><p>#配置fastlane的组件来实现自动化</p>
+<p><a href="https://docs.fastlane.tools/actions/" target="_blank" rel="noopener">组件详情</a></p>
+<p>##一键上传到蒲公英<br><a href="https://www.pgyer.com/doc/view/fastlane" target="_blank" rel="noopener">蒲公英官方文档</a></p>
+<p>##一键上传到TestFight</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
