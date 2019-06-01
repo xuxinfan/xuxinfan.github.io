@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>iOS ：CocoaPods私有库 - Hexo</title>
+    <title>：iOS ：近段时间（2019）面试总结 - Hexo</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="首先在搭建CocoaPods前，要分清两个概念，一个是管理代码的索引库，一个是存放代码的代码库。
-码云私有托管库免费，可以用码云尝试.
-索引库//将这个远程的私有版本仓库添加到本地 
-pod rep,"> 
+    <meta name="description" content="
+什么情况下会内存泄露？
+启动App耗时如何优化？
+自定义过FlowLayout吗？CollectionView的悬浮HeaderSeciton怎么写？
+谈谈RunLoop及实际工作中的运用
+谈谈G,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -38,7 +40,7 @@ pod rep,">
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;" data-url="http://xuxinfan.github.io"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">iOS ：CocoaPods私有库</h3>
+    <h3 class="subtitle">：iOS ：近段时间（2019）面试总结</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -56,39 +58,30 @@ pod rep,">
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">iOS ：CocoaPods私有库</h1>
+        <h1 class="title">：iOS ：近段时间（2019）面试总结</h1>
         <div class="stuff">
-            <span>五月 07, 2019</span>
+            <span>四月 26, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            <p>首先在搭建CocoaPods前，要分清两个概念，一个是管理代码的索引库，一个是存放代码的代码库。</p>
-<p>码云私有托管库免费，可以用码云尝试.</p>
-<h2 id="索引库"><a href="#索引库" class="headerlink" title="索引库"></a>索引库</h2><pre><code class="bash">//将这个远程的私有版本仓库添加到本地 
-pod repo add XXFPodTest https://gitee.com/xuxinfan/XXFPodTest.git
-</code></pre>
-<p>之后就可以管理代码库的内容，待代码库的Spec文件配置完毕</p>
-<h2 id="代码库"><a href="#代码库" class="headerlink" title="代码库"></a>代码库</h2><ul>
-<li>在已有的项目基础上,<code>pod spec create [代码库名称]//创建索引</code> </li>
-<li>或未有项目,<code>pod lib create [代码库名称]</code></li>
-<li>注意Spec索引文件的写法，可直接借鉴参考链接的,注意git提交的tag要和版本号一致</li>
-<li>git提交文件代码和spec文件，且tag需与sepc文件写的版本号一致，如何提交可以查看参考链接</li>
+            <ul>
+<li>什么情况下会内存泄露？</li>
+<li>启动App耗时如何优化？</li>
+<li>自定义过FlowLayout吗？CollectionView的悬浮HeaderSeciton怎么写？</li>
+<li>谈谈RunLoop及实际工作中的运用</li>
+<li><p>谈谈GCD，NSOperation，他们的优缺点</p>
+</li>
+<li><p>KVO,KVC</p>
+</li>
+<li>线程锁，死锁</li>
+<li>锁有几种写法</li>
+<li><p>RunTime，事件响应链</p>
+</li>
+<li><p>+load +intialize</p>
+</li>
+<li>Block，@weakify @strongify</li>
 </ul>
-<p>在<code>pod spec lint</code>验证成功后</p>
-<pre><code class="bash">pod repo push XXFPodTest XXFPodTest.podsepc --allow-warnings
-//pod repo push [代码库] [代码库索引文件]
-</code></pre>
-<p>私有库就搞定了。</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><pre><code class="powershell">#pod文件内容
-#索引源
-source &#39;https://gitee.com/xuxinfan/XXFPodTest.git&#39;
-platform :ios, &#39;9.0&#39;
-target &#39;App&#39; do
-pod &#39;XXFTest&#39;
-</code></pre>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>关于私有CocoaPods的文章很多，很多写的不全或是有问题，此处两篇文章结合参考</p>
-<p><a href="https://www.jianshu.com/p/67a1d8385c80" target="_blank" rel="noopener">https://www.jianshu.com/p/67a1d8385c80</a><br><a href="https://www.jianshu.com/p/0c640821b36f" target="_blank" rel="noopener">https://www.jianshu.com/p/0c640821b36f</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
