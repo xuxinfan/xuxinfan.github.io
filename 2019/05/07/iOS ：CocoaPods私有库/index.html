@@ -12,9 +12,8 @@
     <meta name="keywords" content="Fechin,"> 
     <meta name="description" content="首先在搭建CocoaPods前，要分清两个概念，一个是管理代码的索引库，一个是存放代码的代码库。
 码云私有托管库免费，可以用码云尝试.
-##索引库
-//将这个远程的私有版本仓库添加到本地 
-pod ,"> 
+索引库//将这个远程的私有版本仓库添加到本地 
+pod rep,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -37,7 +36,7 @@ pod ,">
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://xuxinfan.github.io"></a>
     <div title="播放/暂停" class="icon-play"></div>
     <h3 class="subtitle">iOS ：CocoaPods私有库</h3>
     <div class="social">
@@ -66,12 +65,10 @@ pod ,">
         <div class="content markdown">
             <p>首先在搭建CocoaPods前，要分清两个概念，一个是管理代码的索引库，一个是存放代码的代码库。</p>
 <p>码云私有托管库免费，可以用码云尝试.</p>
-<p>##索引库</p>
-<pre><code>//将这个远程的私有版本仓库添加到本地 
+<h2 id="索引库"><a href="#索引库" class="headerlink" title="索引库"></a>索引库</h2><pre><code>//将这个远程的私有版本仓库添加到本地 
 pod repo add XXFPodTest https://gitee.com/xuxinfan/XXFPodTest.git
 </code></pre><p>之后就可以管理代码库的内容，待代码库的Spec文件配置完毕</p>
-<p>##代码库</p>
-<ul>
+<h2 id="代码库"><a href="#代码库" class="headerlink" title="代码库"></a>代码库</h2><ul>
 <li>在已有的项目基础上,<code>pod spec create [代码库名称]//创建索引</code> </li>
 <li>或未有项目,<code>pod lib create [代码库名称]</code></li>
 <li>注意Spec索引文件的写法，可直接借鉴参考链接的,注意git提交的tag要和版本号一致</li>
@@ -81,15 +78,14 @@ pod repo add XXFPodTest https://gitee.com/xuxinfan/XXFPodTest.git
 <pre><code>pod repo push XXFPodTest XXFPodTest.podsepc --allow-warnings
 //pod repo push [代码库] [代码库索引文件]
 </code></pre><p>私有库就搞定了。</p>
-<p>##使用方法</p>
-<pre><code>#pod文件内容
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><pre><code class="powershell">#pod文件内容
 #索引源
 source &#39;https://gitee.com/xuxinfan/XXFPodTest.git&#39;
 platform :ios, &#39;9.0&#39;
 target &#39;App&#39; do
 pod &#39;XXFTest&#39;
-</code></pre><p>##参考链接</p>
-<p>关于私有CocoaPods的文章很多，很多写的不全或是有问题，此处两篇文章结合参考</p>
+</code></pre>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>关于私有CocoaPods的文章很多，很多写的不全或是有问题，此处两篇文章结合参考</p>
 <p><a href="https://www.jianshu.com/p/67a1d8385c80" target="_blank" rel="noopener">https://www.jianshu.com/p/67a1d8385c80</a><br><a href="https://www.jianshu.com/p/0c640821b36f" target="_blank" rel="noopener">https://www.jianshu.com/p/0c640821b36f</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
